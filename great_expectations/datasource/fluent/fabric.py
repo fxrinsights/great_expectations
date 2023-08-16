@@ -28,11 +28,29 @@ class PowerBIDax(DataAsset):
     dataset: str
     workspace: str
 
+    def test_connection(self) -> None:
+        """
+        Whatever is needed to test the connection to and/or validatitly of the asset.
+        This could be a noop.
+        """
+        raise NotImplementedError(
+            f"test_connection is not implemented for {type(self).__name__}."
+        )
+
 
 class PowerBIMeasure(DataAsset):
     """Microsoft PowerBI Measure."""
 
     type: Literal["powerbi_measure"] = "powerbi_measure"
+
+    def test_connection(self) -> None:
+        """
+        Whatever is needed to test the connection to and/or validatitly of the asset.
+        This could be a noop.
+        """
+        raise NotImplementedError(
+            f"test_connection is not implemented for {type(self).__name__}."
+        )
 
 
 class PowerBITable(DataAsset):
@@ -41,6 +59,15 @@ class PowerBITable(DataAsset):
     type: Literal["powerbi_table"] = "powerbi_table"
     schema_: Optional[str] = pydantic.Field(None, alias="schema")
     table_name: str
+
+    def test_connection(self) -> None:
+        """
+        Whatever is needed to test the connection to and/or validatitly of the asset.
+        This could be a noop.
+        """
+        raise NotImplementedError(
+            f"test_connection is not implemented for {type(self).__name__}."
+        )
 
 
 # This improves our error messages by providing a more specific type for pydantic to validate against
@@ -160,3 +187,24 @@ class FabricDatasource(Datasource):
             batch_metadata=batch_metadata or {},
         )
         return self._add_asset(asset)
+
+    def test_connection(self, test_assets: bool = True) -> None:
+        """Test the connection for the FabricDatasource.
+
+        Args:
+            test_assets: If assets have been passed to the Datasource, whether to test them as well.
+
+        Raises:
+            TestConnectionError: If the connection test fails.
+        """
+        # TODO: first ensure we are connected to fabric.
+        # Catch any errors and raise TestConnectionError if not.
+
+        if self.assets and test_assets:
+            for asset in self.assets:
+                asset._datasource = self
+                asset.test_connection()
+
+        raise NotImplementedError(
+            f"test_connection is not implemented for {type(self).__name__}."
+        )
