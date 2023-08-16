@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import logging
 from abc import ABCMeta
-from typing import TYPE_CHECKING, Any, List
+from typing import TYPE_CHECKING, Any, Callable, List, Protocol
 
 from great_expectations.compatibility.typing_extensions import override
 from great_expectations.core.id_dict import BatchSpec
@@ -10,6 +10,8 @@ from great_expectations.exceptions import InvalidBatchIdError, InvalidBatchSpecE
 from great_expectations.types.base import SerializableDotDict
 
 if TYPE_CHECKING:
+    import pandas as pd
+
     from great_expectations.alias_types import JSONValues, PathStr
 
 logger = logging.getLogger(__name__)
@@ -36,7 +38,20 @@ class BatchMarkers(BatchSpec):
         return self.get("ge_load_time")
 
 
-class PandasBatchSpec(SerializableDotDict, BatchSpec, metaclass=ABCMeta):
+class PandasBatchSpecProtocol(Protocol):
+    @property
+    def reader_method(self) -> str:
+        ...
+
+    @property
+    def reader_options(self) -> dict:
+        ...
+
+    def to_json_dict(self) -> dict[str, JSONValues]:
+        ...
+
+
+class PandasBatchSpec(SerializableDotDict, BatchSpec, PandasBatchSpecProtocol):
     @property
     def reader_method(self) -> str:
         return self["reader_method"]
@@ -107,6 +122,13 @@ class FabricBatchSpec:
 
     def to_json_dict(self) -> dict[str, JSONValues]:
         raise NotImplementedError
+
+    def get_reader_function(self) -> Callable[..., pd.DataFrame]:
+        # lazy import of fabric module which cotains the reader functions
+        # import semantic_link
+
+        # return getattr(semantic_link, self.reader_method)
+        raise NotImplementedError("Retireve reader method from fabric module")
 
 
 class S3BatchSpec(PathBatchSpec):
