@@ -16,14 +16,20 @@ if TYPE_CHECKING:
 
 
 class PowerBIDax(DataAsset):
+    """Microsoft PowerBI DAX."""
+
     type: Literal["powerbi_dax"] = "powerbi_dax"
 
 
 class PowerBIMeasure(DataAsset):
+    """Microsoft PowerBI Measure."""
+
     type: Literal["powerbi_measure"] = "powerbi_measure"
 
 
 class PowerBITable(DataAsset):
+    """Microsoft PowerBI Table."""
+
     type: Literal["powerbi_table"] = "powerbi_table"
 
 
