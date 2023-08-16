@@ -19,6 +19,9 @@ class PowerBIDax(DataAsset):
     """Microsoft PowerBI DAX."""
 
     type: Literal["powerbi_dax"] = "powerbi_dax"
+    query: str
+    dataset: str
+    workspace: str
 
 
 class PowerBIMeasure(DataAsset):
@@ -31,6 +34,8 @@ class PowerBITable(DataAsset):
     """Microsoft PowerBI Table."""
 
     type: Literal["powerbi_table"] = "powerbi_table"
+    schema_: str = pydantic.Field(..., alias="schema")
+    table_name: str
 
 
 # This improves our error messages by providing a more specific type for pydantic to validate against
