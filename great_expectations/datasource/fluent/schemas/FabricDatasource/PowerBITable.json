@@ -31,10 +31,20 @@
         "batch_metadata": {
             "title": "Batch Metadata",
             "type": "object"
+        },
+        "schema": {
+            "title": "Schema",
+            "type": "string"
+        },
+        "table_name": {
+            "title": "Table Name",
+            "type": "string"
         }
     },
     "required": [
-        "name"
+        "name",
+        "schema",
+        "table_name"
     ],
     "additionalProperties": false,
     "definitions": {

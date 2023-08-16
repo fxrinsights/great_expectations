@@ -104,10 +104,20 @@
                 "batch_metadata": {
                     "title": "Batch Metadata",
                     "type": "object"
+                },
+                "schema": {
+                    "title": "Schema",
+                    "type": "string"
+                },
+                "table_name": {
+                    "title": "Table Name",
+                    "type": "string"
                 }
             },
             "required": [
-                "name"
+                "name",
+                "schema",
+                "table_name"
             ],
             "additionalProperties": false
         },
@@ -184,10 +194,25 @@
                 "batch_metadata": {
                     "title": "Batch Metadata",
                     "type": "object"
+                },
+                "query": {
+                    "title": "Query",
+                    "type": "string"
+                },
+                "dataset": {
+                    "title": "Dataset",
+                    "type": "string"
+                },
+                "workspace": {
+                    "title": "Workspace",
+                    "type": "string"
                 }
             },
             "required": [
-                "name"
+                "name",
+                "query",
+                "dataset",
+                "workspace"
             ],
             "additionalProperties": false
         }
