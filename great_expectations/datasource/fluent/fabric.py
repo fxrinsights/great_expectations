@@ -55,8 +55,6 @@ class FabricDatasource(Datasource):
     # right side of the operator determines the type name
     # left side enforces the names on instance creation
     type: Literal["fabric"] = "fabric"
-    # We need to explicitly add each asset type to the Union due to how
-    # deserialization is implemented in our pydantic base model.
     assets: List[AssetTypes] = []
 
     @property
