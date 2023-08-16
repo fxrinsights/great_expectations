@@ -90,6 +90,25 @@ class PathBatchSpec(BatchSpec, metaclass=ABCMeta):
         return self.get("reader_options") or {}
 
 
+class FabricBatchSpec:
+    # TODO: use slots
+
+    def __init__(self, reader_method: str, **reader_kwargs: Any) -> None:
+        self._reader_method = reader_method
+        self._reader_kwargs = reader_kwargs
+
+    @property
+    def reader_method(self) -> str:
+        return self._reader_method
+
+    @property
+    def reader_options(self) -> dict[str, Any]:
+        return self._reader_kwargs
+
+    def to_json_dict(self) -> dict[str, JSONValues]:
+        raise NotImplementedError
+
+
 class S3BatchSpec(PathBatchSpec):
     pass
 
