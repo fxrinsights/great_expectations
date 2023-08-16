@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import logging
 from abc import ABCMeta
-from typing import TYPE_CHECKING, Any, Callable, List, Protocol
+from typing import TYPE_CHECKING, Any, Callable, List, Literal, Protocol
 
 from great_expectations.compatibility.typing_extensions import override
 from great_expectations.core.id_dict import BatchSpec
@@ -108,7 +108,11 @@ class PathBatchSpec(BatchSpec, metaclass=ABCMeta):
 class FabricBatchSpec:
     # TODO: use slots
 
-    def __init__(self, reader_method: str, **reader_kwargs: Any) -> None:
+    def __init__(
+        self,
+        reader_method: Literal["read_table", "evalute_measure", "evaluate_dax"],
+        **reader_kwargs: Any,
+    ) -> None:
         self._reader_method = reader_method
         self._reader_kwargs = reader_kwargs
 
@@ -125,10 +129,9 @@ class FabricBatchSpec:
 
     def get_reader_function(self) -> Callable[..., pd.DataFrame]:
         # lazy import of fabric module which cotains the reader functions
-        # import semantic_link
+        from sempy import fabric
 
-        # return getattr(semantic_link, self.reader_method)
-        raise NotImplementedError("Retireve reader method from fabric module")
+        return getattr(fabric, self.reader_method)
 
 
 class S3BatchSpec(PathBatchSpec):
