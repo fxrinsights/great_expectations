@@ -88,11 +88,17 @@ class FabricDatasource(Datasource):
         PowerBIMeasure,
         PowerBITable,
     ]
+    # any fabric datsource specific fields should be added to this set
+    # example a connection_string field or a data directory field
+    _EXTRA_EXCLUDED_EXEC_ENG_ARGS: ClassVar[set] = {"extra_field_1"}
 
     # right side of the operator determines the type name
     # left side enforces the names on instance creation
     type: Literal["fabric"] = "fabric"
     assets: List[AssetTypes] = []
+
+    # fabric datasource specific fields
+    extra_field_1: Optional[str] = None
 
     @property
     def execution_engine_type(self) -> Type[PandasExecutionEngine]:
