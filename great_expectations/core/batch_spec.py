@@ -11,6 +11,7 @@ from great_expectations.types.base import SerializableDotDict
 
 if TYPE_CHECKING:
     import pandas as pd
+    from typing_extensions import TypeAlias
 
     from great_expectations.alias_types import JSONValues, PathStr
 
@@ -105,12 +106,17 @@ class PathBatchSpec(BatchSpec, metaclass=ABCMeta):
         return self.get("reader_options") or {}
 
 
+FabricReaderMethods: TypeAlias = Literal[
+    "read_table", "evalute_measure", "evaluate_dax"
+]
+
+
 class FabricBatchSpec:
     # TODO: use slots
 
     def __init__(
         self,
-        reader_method: Literal["read_table", "evalute_measure", "evaluate_dax"],
+        reader_method: FabricReaderMethods,
         **reader_kwargs: Any,
     ) -> None:
         self._reader_method = reader_method
