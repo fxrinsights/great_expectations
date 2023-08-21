@@ -113,7 +113,7 @@ FabricReaderMethods: TypeAlias = Literal[
 ]
 
 
-class FabricBatchSpec:
+class FabricBatchSpec(PandasBatchSpecProtocol):
     # TODO: use slots
 
     def __init__(
@@ -125,13 +125,16 @@ class FabricBatchSpec:
         self._reader_kwargs = reader_kwargs
 
     @property
+    @override
     def reader_method(self) -> str:
         return self._reader_method
 
     @property
+    @override
     def reader_options(self) -> dict[str, Any]:
         return self._reader_kwargs
 
+    @override
     def to_json_dict(self) -> dict[str, JSONValues]:
         raise NotImplementedError
 
