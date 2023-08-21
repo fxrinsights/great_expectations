@@ -54,10 +54,12 @@ class PandasBatchSpecProtocol(Protocol):
 
 class PandasBatchSpec(SerializableDotDict, BatchSpec, PandasBatchSpecProtocol):
     @property
+    @override
     def reader_method(self) -> str:
         return self["reader_method"]
 
     @property
+    @override
     def reader_options(self) -> dict:
         return self.get("reader_options", {})
 

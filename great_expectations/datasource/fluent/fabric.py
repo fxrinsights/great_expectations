@@ -5,6 +5,7 @@ from typing import TYPE_CHECKING, ClassVar, List, Literal, Optional, Type, Union
 import pydantic
 from typing_extensions import Annotated, TypeAlias
 
+from great_expectations.compatibility.typing_extensions import override
 from great_expectations.datasource.fluent import BatchRequest
 from great_expectations.datasource.fluent.interfaces import (
     Batch,
@@ -28,6 +29,7 @@ class _PowerBIAsset(DataAsset):
 
     _reader_method: ClassVar[FabricReaderMethods]
 
+    @override
     def test_connection(self) -> None:
         """
         Whatever is needed to test the connection to and/or validatitly of the asset.
@@ -37,6 +39,7 @@ class _PowerBIAsset(DataAsset):
             f"test_connection is not implemented for {type(self).__name__}."
         )
 
+    @override
     def get_batch_list_from_batch_request(
         self, batch_request: BatchRequest
     ) -> list[Batch]:
@@ -44,6 +47,7 @@ class _PowerBIAsset(DataAsset):
             "get_batch_list_from_batch_request is not implemented"
         )
 
+    @override
     def build_batch_request(self) -> BatchRequest:  # type: ignore[override]
         """A batch request that can be used to obtain batches for this DataAsset.
 
@@ -112,6 +116,7 @@ class FabricDatasource(Datasource):
     extra_field_1: Optional[str] = None
 
     @property
+    @override
     def execution_engine_type(self) -> Type[PandasExecutionEngine]:
         """Return the PandasExecutionEngine unless the override is set"""
         from great_expectations.execution_engine.pandas_execution_engine import (
@@ -205,6 +210,7 @@ class FabricDatasource(Datasource):
         )
         return self._add_asset(asset)
 
+    @override
     def test_connection(self, test_assets: bool = True) -> None:
         """Test the connection for the FabricDatasource.
 
