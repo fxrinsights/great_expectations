@@ -10,7 +10,7 @@ from typing import (
     Union,
 )
 
-import pydantic
+import pydantic.v1 as pydantic
 
 from great_expectations.datasource.fluent.fluent_base_model import (
     FluentBaseModel,

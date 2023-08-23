@@ -17,8 +17,8 @@ from typing import (
     cast,
 )
 
-import pydantic
-from pydantic import Field
+import pydantic.v1 as pydantic
+from pydantic.v1 import Field
 from typing_extensions import Annotated
 
 import great_expectations.exceptions as gx_exceptions

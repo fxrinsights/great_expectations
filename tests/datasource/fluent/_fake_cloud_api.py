@@ -21,7 +21,7 @@ from typing import (
     Union,
 )
 
-import pydantic
+import pydantic.v1 as pydantic
 import responses
 
 from great_expectations.data_context.store.gx_cloud_store_backend import (

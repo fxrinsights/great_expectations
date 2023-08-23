@@ -3,8 +3,8 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, ClassVar, List, Literal, Type, Union, overload
 from urllib import parse
 
-import pydantic
-from pydantic import AnyUrl
+import pydantic.v1 as pydantic
+from pydantic.v1 import AnyUrl
 
 from great_expectations.compatibility.sqlalchemy import (
     sqlalchemy as sa,
@@ -26,7 +26,7 @@ from great_expectations.datasource.fluent.sql_datasource import (
 )
 
 if TYPE_CHECKING:
-    from pydantic.networks import Parts
+    from pydantic.v1.networks import Parts
     from sqlalchemy.sql import quoted_name  # noqa: TID251 # type-checking only
 
     from great_expectations.compatibility import sqlalchemy

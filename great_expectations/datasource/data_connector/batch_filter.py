@@ -4,7 +4,7 @@ import itertools
 import logging
 from typing import TYPE_CHECKING, Callable, Dict, List, Optional, Sequence, Union
 
-from pydantic import StrictInt, StrictStr
+from pydantic.v1 import StrictInt, StrictStr
 
 import great_expectations.exceptions as gx_exceptions
 from great_expectations.core.id_dict import IDDict

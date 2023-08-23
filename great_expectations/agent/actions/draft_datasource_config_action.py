@@ -1,6 +1,6 @@
 from uuid import UUID
 
-import pydantic
+import pydantic.v1 as pydantic
 
 from great_expectations.agent.actions import ActionResult, AgentAction
 from great_expectations.agent.config import GxAgentEnvVars

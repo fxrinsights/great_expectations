@@ -4,7 +4,7 @@ import logging
 import warnings
 from typing import TYPE_CHECKING, Mapping
 
-from pydantic import SecretStr
+from pydantic.v1 import SecretStr
 
 from great_expectations.core.config_substitutor import TEMPLATE_STR_REGEX
 

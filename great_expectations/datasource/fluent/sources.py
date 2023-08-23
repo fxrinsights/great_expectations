@@ -30,7 +30,7 @@ from great_expectations.datasource.fluent.signatures import _merge_signatures
 from great_expectations.datasource.fluent.type_lookup import TypeLookup
 
 if TYPE_CHECKING:
-    import pydantic
+    import pydantic.v1 as pydantic
     from typing_extensions import TypeAlias
 
     from great_expectations.data_context import AbstractDataContext as GXDataContext

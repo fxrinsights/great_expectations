@@ -7,7 +7,7 @@ import pathlib
 from pprint import pformat as pf
 from typing import TYPE_CHECKING, Any, Callable, Type
 
-import pydantic
+import pydantic.v1 as pydantic
 import pytest
 from pytest import MonkeyPatch, param
 

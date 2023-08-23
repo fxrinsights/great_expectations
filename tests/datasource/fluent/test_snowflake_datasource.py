@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-import pydantic
+import pydantic.v1 as pydantic
 import pytest
 
 from great_expectations.compatibility.snowflake import snowflake

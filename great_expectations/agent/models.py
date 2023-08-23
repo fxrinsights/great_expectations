@@ -2,7 +2,7 @@ import uuid
 from typing import Literal, Sequence, Union
 from uuid import UUID
 
-from pydantic import BaseModel, Extra, Field
+from pydantic.v1 import BaseModel, Extra, Field
 from typing_extensions import Annotated
 
 

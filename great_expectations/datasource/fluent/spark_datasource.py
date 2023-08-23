@@ -15,8 +15,8 @@ from typing import (
     Union,
 )
 
-import pydantic
-from pydantic import StrictBool, StrictFloat, StrictInt, StrictStr
+import pydantic.v1 as pydantic
+from pydantic.v1 import StrictBool, StrictFloat, StrictInt, StrictStr
 
 import great_expectations.exceptions as gx_exceptions
 from great_expectations.compatibility.pyspark import DataFrame, pyspark

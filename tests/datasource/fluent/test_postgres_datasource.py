@@ -19,7 +19,7 @@ from typing import (
 )
 
 import pytest
-from pydantic import ValidationError
+from pydantic.v1 import ValidationError
 
 import great_expectations.exceptions as ge_exceptions
 from great_expectations.core.batch_spec import SqlAlchemyDatasourceBatchSpec

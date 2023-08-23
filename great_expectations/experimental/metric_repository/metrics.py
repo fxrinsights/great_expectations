@@ -3,8 +3,8 @@ from __future__ import annotations
 import uuid
 from typing import TYPE_CHECKING, List, Optional, Sequence, Union
 
-import pydantic
-from pydantic import BaseModel, Field
+import pydantic.v1 as pydantic
+from pydantic.v1 import BaseModel, Field
 
 if TYPE_CHECKING:
     from great_expectations.datasource.fluent.interfaces import Batch

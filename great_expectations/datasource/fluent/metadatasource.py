@@ -7,7 +7,7 @@ import logging
 from pprint import pformat as pf
 from typing import Set, Type
 
-import pydantic
+import pydantic.v1 as pydantic
 
 from great_expectations.datasource.fluent.sources import _SourceFactories
 from great_expectations.datasource.fluent.type_lookup import TypeLookup

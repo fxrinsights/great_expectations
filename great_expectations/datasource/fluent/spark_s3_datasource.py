@@ -3,7 +3,7 @@ from __future__ import annotations
 import logging
 from typing import TYPE_CHECKING, Any, ClassVar, Dict, Literal, Type, Union
 
-import pydantic
+import pydantic.v1 as pydantic
 
 from great_expectations.compatibility import aws
 from great_expectations.core._docs_decorators import public_api

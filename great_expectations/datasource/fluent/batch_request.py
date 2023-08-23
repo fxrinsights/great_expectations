@@ -11,10 +11,10 @@ from typing import (
     Union,
 )
 
-import pydantic
-from pydantic import StrictStr
-from pydantic.json import pydantic_encoder
-from pydantic.schema import default_ref_template
+import pydantic.v1 as pydantic
+from pydantic.v1 import StrictStr
+from pydantic.v1.json import pydantic_encoder
+from pydantic.v1.schema import default_ref_template
 
 from great_expectations.core._docs_decorators import public_api
 from great_expectations.datasource.data_connector.batch_filter import (
@@ -125,7 +125,9 @@ class BatchRequest(pydantic.BaseModel):
         if options is None:
             return {}
         if not isinstance(options, dict):
-            raise TypeError("BatchRequestOptions must take the form of a dictionary.")
+            raise TypeError(
+                "BatchRequestOptions must take the form of a dictionary."
+            )
         if any(not isinstance(key, str) for key in options):
             raise TypeError("BatchRequestOptions keys must all be strings.")
         return options

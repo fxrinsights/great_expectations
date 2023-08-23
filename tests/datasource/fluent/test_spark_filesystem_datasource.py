@@ -7,7 +7,7 @@ import re
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, List, cast
 
-import pydantic
+import pydantic.v1 as pydantic
 import pytest
 
 import great_expectations.exceptions as ge_exceptions

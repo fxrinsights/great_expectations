@@ -12,8 +12,8 @@ from typing import (
     Union,
 )
 
-import pydantic
-from pydantic import Field
+import pydantic.v1 as pydantic
+from pydantic.v1 import Field
 
 from great_expectations.datasource.fluent import _SparkDatasource
 from great_expectations.datasource.fluent.directory_data_asset import (

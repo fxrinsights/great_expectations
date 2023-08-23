@@ -21,7 +21,7 @@ from typing import (
     overload,
 )
 
-from pydantic import Extra, Field, validator
+from pydantic.v1 import Extra, Field, validator
 from ruamel.yaml import YAML
 
 from great_expectations.compatibility.sqlalchemy import TextClause
@@ -41,7 +41,7 @@ from great_expectations.datasource.fluent.sources import (
 )
 
 if TYPE_CHECKING:
-    from pydantic.error_wrappers import ErrorDict as PydanticErrorDict
+    from pydantic.v1.error_wrappers import ErrorDict as PydanticErrorDict
 
     from great_expectations.datasource.fluent.fluent_base_model import (
         AbstractSetIntStr,

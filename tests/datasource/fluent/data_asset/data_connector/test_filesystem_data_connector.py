@@ -2,7 +2,7 @@ import pathlib
 import re
 from typing import TYPE_CHECKING, List
 
-import pydantic
+import pydantic.v1 as pydantic
 import pytest
 
 from great_expectations.core import IDDict

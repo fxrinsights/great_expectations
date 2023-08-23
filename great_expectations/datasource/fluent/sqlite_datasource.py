@@ -13,7 +13,7 @@ from typing import (
     cast,
 )
 
-import pydantic
+import pydantic.v1 as pydantic
 
 from great_expectations.core._docs_decorators import public_api
 from great_expectations.datasource.fluent.config_str import ConfigStr

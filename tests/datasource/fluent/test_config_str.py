@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Callable, List, Union
 
-import pydantic
+import pydantic.v1 as pydantic
 import pytest
 from pytest import MonkeyPatch
 

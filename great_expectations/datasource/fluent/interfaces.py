@@ -28,15 +28,15 @@ from typing import (
     Union,
 )
 
-import pydantic
-from pydantic import (
+import pydantic.v1 as pydantic
+from pydantic.v1 import (
     Field,
     StrictBool,
     StrictInt,
     root_validator,
     validate_arguments,
 )
-from pydantic import dataclasses as pydantic_dc
+from pydantic.v1 import dataclasses as pydantic_dc
 
 from great_expectations.core._docs_decorators import public_api
 from great_expectations.core.config_substitutor import _ConfigurationSubstitutor

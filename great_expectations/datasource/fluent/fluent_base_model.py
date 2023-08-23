@@ -19,7 +19,7 @@ from typing import (
     overload,
 )
 
-import pydantic
+import pydantic.v1 as pydantic
 from ruamel.yaml import YAML
 
 from great_expectations.datasource.fluent.config_str import ConfigStr

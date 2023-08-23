@@ -5,7 +5,7 @@ import pathlib
 import re
 from typing import TYPE_CHECKING, Callable, ClassVar, List, Optional, Type
 
-import pydantic
+import pydantic.v1 as pydantic
 
 from great_expectations.datasource.data_connector.util import (
     get_filesystem_one_level_directory_glob_path_list,

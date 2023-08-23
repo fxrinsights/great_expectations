@@ -1,5 +1,5 @@
-import pydantic
-from pydantic import AnyUrl
+import pydantic.v1 as pydantic
+from pydantic.v1 import AnyUrl
 
 from great_expectations.data_context.cloud_constants import CLOUD_DEFAULT_BASE_URL
 

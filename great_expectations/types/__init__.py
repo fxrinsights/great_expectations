@@ -4,7 +4,7 @@ from enum import Enum
 from typing import ClassVar, Dict, Optional, Set
 
 import pandas as pd
-import pydantic
+import pydantic.v1 as pydantic
 
 from great_expectations.compatibility import pyspark
 

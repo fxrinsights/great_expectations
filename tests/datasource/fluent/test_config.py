@@ -18,7 +18,7 @@ from typing import (  # TODO: revert use of cast
     cast,
 )
 
-import pydantic
+import pydantic.v1 as pydantic
 import pytest
 
 from great_expectations.core.yaml_handler import YAMLHandler

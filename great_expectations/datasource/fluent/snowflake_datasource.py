@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, ClassVar, Literal, Optional, Union
 
-import pydantic
-from pydantic import AnyUrl, errors
+import pydantic.v1 as pydantic
+from pydantic.v1 import AnyUrl, errors
 
 from great_expectations.compatibility.snowflake import URL
 from great_expectations.compatibility.sqlalchemy import sqlalchemy as sa
@@ -15,7 +15,7 @@ from great_expectations.datasource.fluent.sql_datasource import (
 )
 
 if TYPE_CHECKING:
-    from pydantic.networks import Parts
+    from pydantic.v1.networks import Parts
 
     from great_expectations.compatibility import sqlalchemy
 
